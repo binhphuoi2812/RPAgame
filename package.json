@@ -12,6 +12,7 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "node-cron": "^3.0.0",
+    "puppeteer": "^13.1.2",
     "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-angular": "^3.2.4"
   }
