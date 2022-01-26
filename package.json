@@ -1,0 +1,18 @@
+{
+  "name": "188bet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "node-cron": "^3.0.0",
+    "puppeteer-extra": "^3.2.3",
+    "puppeteer-extra-plugin-angular": "^3.2.4"
+  }
+}
