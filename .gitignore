@@ -1,3 +1,4 @@
+#update git
 /node_modules/*
 package-lock.json
 /*.png
