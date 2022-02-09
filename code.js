@@ -60,6 +60,9 @@ const Screenshot = async () => {
             return false;
         } else {
         let current = now.toLocaleTimeString().split(' ');
+
+        let nametime = `${now.getMonth()+1}-${now.getDate()}-${now.getFullYear()}_${now.getHours()}_${now.getMinutes()}_${now.getSeconds()}`;
+        console.log(current,nametime);
         
         const path = './screenshot.png'
 
@@ -76,7 +79,7 @@ const Screenshot = async () => {
         // }
         page2.screenshot({
 
-            path: `./screenshot${current[0]}.png`,
+            path: `./screenshot_${i}_${nametime}.png`,
 
             fullPage: true
 
