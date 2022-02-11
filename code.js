@@ -38,7 +38,7 @@ const Screenshot = async () => {
     await session.send('Page.setWebLifecycleState', {state: 'active'});
     
 
-    cron.schedule('*/60 * * * * *', async () => {
+    cron.schedule('1 * * * * *', async () => {
         let cookies = await page.cookies();
         limitCookies = cookies.map((item) => {
             item.expires = -1;
