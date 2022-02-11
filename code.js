@@ -8,6 +8,7 @@ var start = '';
 const Screenshot = async () => {
     const browser = await puppeteer.launch({
         headless: true,
+        defaultViewport: {width: 1920, height: 1080},
         args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-background-timer-throttling',
         '--disable-backgrounding-occluded-windows',
         '--disable-renderer-backgrounding']
@@ -37,7 +38,7 @@ const Screenshot = async () => {
     await session.send('Page.setWebLifecycleState', {state: 'active'});
     
 
-    cron.schedule('1 * * * * *', async () => {
+    cron.schedule('*/60 * * * * *', async () => {
         let cookies = await page.cookies();
         limitCookies = cookies.map((item) => {
             item.expires = -1;
