@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer-extra');
+const locateChrome = require('locate-chrome');
 puppeteer.use(require('puppeteer-extra-plugin-angular')());
 const cron = require('node-cron')
 const fs = require('fs')
@@ -10,7 +11,7 @@ const Screenshot = async () => {
         const browser = await puppeteer.launch({
             headless: false,
             defaultViewport: {width: 1920, height: 1080},
-            executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            executablePath: await new Promise(resolve => locateChrome(arg => resolve(arg))),
             ignoreDefaultArgs: ['--enable-automation'],
             args: ['--no-sandbox', '--disable-setuid-sandbox','--disable-background-timer-throttling',
             '--disable-backgrounding-occluded-windows',
@@ -35,11 +36,11 @@ const Screenshot = async () => {
         const page2 = await browser.newPage();        // open new tab
         await page2.goto('https://www.jbbodds.com/vi-vn/live/lobby?partnerId=56&partnerName=EA-N2Live&playfor=real&&category=Baccarat&gameType=',{waitUntil :"networkidle2"});
         await page2.bringToFront();                   // make the tab active
-        await page2.waitForSelector('.handCursor', {
+        await page2.waitForSelector('#Cocos2dGameContainer', {
             visible: true,
         });
         await page2.waitForTimeout(3000)
-        let scrollBar = await page2.$('.handCursor');
+        let scrollBar = await page2.$('#Cocos2dGameContainer');
         await scrollBar.evaluate((el) => el.style.height = 100 + '%');
         await page2.waitForTimeout(1000);
     
